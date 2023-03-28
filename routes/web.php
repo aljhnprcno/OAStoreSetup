@@ -100,6 +100,8 @@ Route::post('/admin/add', 'StoreSetupController@create');
 Route::post('/admin/get', 'StoreSetupController@getProduct');
 
 Route::post('/admin/delete', 'StoreSetupController@deleteProduct');
+Route::post('/admin/deletepackage', 'StoreSetupController@deletePackage');
+Route::post('/admin/deletecategory', 'StoreSetupController@deleteCategory');
 
 Route::post('/admin/gradelevels', 'StoreSetupController@getGradeLevels');
 

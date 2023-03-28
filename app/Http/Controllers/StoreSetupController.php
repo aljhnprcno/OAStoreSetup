@@ -39,7 +39,7 @@ class StoreSetupController extends Controller
   public function create(Request $request)
   {
     $disk = Storage::disk('gcs');
-    if (isset($request->productID) && $request->productID !== '') {
+    if (isset($request->productID) && $request->productID !== '') { // add to category and package !!!!!!!!
       $attachment_name = "";
       $imageSaved = "";
       if (isset($request->attachment_path) && $request->attachment_path != null) {
@@ -55,7 +55,7 @@ class StoreSetupController extends Controller
         $query = Product::where('id', $request->productID)->first();
         $imageSaved = $query->image;
       }
-      $query = Product::where('id', $request->productID)->update([
+      $query = Product::where('id', $request->productID)->update([ // add to category and package !!!!!!!!
         'productname' => $request->productname,
         'package' => $request->package,
         'category' => $request->category,
@@ -106,6 +106,28 @@ class StoreSetupController extends Controller
     return response()->json($rs);
   }
 
+  public function deletePackage(Request $request)
+  {
+    $query = Package::where('id', $request->id)->delete();
+
+    if ($query) {
+      $rs = ['title' => 'Success', 'text' => 'Package Deleted', 'type' => 'success'];
+    }
+
+    return response()->json($rs);
+  }
+
+  public function deleteCategory(Request $request)
+  {
+    $query = Category::where('id', $request->id)->delete();
+
+    if ($query) {
+      $rs = ['title' => 'Success', 'text' => 'Category Deleted', 'type' => 'success'];
+    }
+
+    return response()->json($rs);
+  }
+
   public function GenerateRandom()
   {
     $today = date('YmdHi');
@@ -123,7 +145,7 @@ class StoreSetupController extends Controller
   }
 
   public function getGradeLevels(Request $request)
-  { 
+  {
     $branch = Branch::get($request->branch_code, false, false, true);
     $data = GradeLevel::on($branch[0])->where('is_active', 0)->orderBy('sequence')->get();
     return response()->json($data);
@@ -143,24 +165,46 @@ class StoreSetupController extends Controller
 
   public function createPackage(Request $request)
   {
-    $query = Package::create([
-      'package_name' => $request->package_name,
+    if (isset($request->packageID) && $request->packageID !== '') {
+      $query = Package::where('id', $request->packageID)->update([
+        'package_name' => $request->package_name,
+      ]);
 
-    ]);
-    if ($query) {
-      $rs = ['title' => 'Success', 'text' => 'Package Inserted', 'type' => 'success'];
+      if ($query) {
+        $rs = ['title' => 'Success', 'text' => 'Package Updated', 'type' => 'success'];
+      }
+    } else {
+      $query = Package::create([
+        'package_name' => $request->package_name,
+      ]);
+
+      if ($query) {
+        $rs = ['title' => 'Success', 'text' => 'Package Inserted', 'type' => 'success'];
+      }
     }
     return response()->json($rs);
   }
 
   public function createCategory(Request $request)
   {
-    $query = Category::create([
-      'category_name' => $request->category_name,
-      'has_sizes' => $request->has_sizes,
-    ]);
-    if ($query) {
-      $rs = ['title' => 'Success', 'text' => 'Category Inserted', 'type' => 'success'];
+    if (isset($request->categoryID) && $request->categoryID !== '') {
+      $query = Category::where('id', $request->categoryID)->update([
+        'category_name' => $request->category_name,
+        'has_sizes' => $request->has_sizes,
+      ]);
+
+      if ($query) {
+        $rs = ['title' => 'Success', 'text' => 'Category Updated', 'type' => 'success'];
+      }
+    } else {
+      $query = Category::create([
+        'category_name' => $request->category_name,
+        'has_sizes' => $request->has_sizes,
+      ]);
+
+      if ($query) {
+        $rs = ['title' => 'Success', 'text' => 'Category Inserted', 'type' => 'success'];
+      }
     }
     return response()->json($rs);
   }

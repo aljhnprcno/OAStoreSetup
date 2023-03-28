@@ -30,7 +30,7 @@
                 <template slot-scope="scope">
                   <el-button type="success" @click="editPackage(scope.row)" size="small"><i
                       class="fa fa-edit"></i></el-button>
-                  <el-button type="danger" @click="deleteProduct(scope.row.id)" size="small"><i
+                  <el-button type="danger" @click="deletePackage(scope.row.id)" size="small"><i
                       class="fa fa-trash"></i></el-button>
                 </template>
               </el-table-column>
@@ -55,7 +55,7 @@
                 </el-form-item>
                 <div class="">
                   <el-button type="success" @click="createPackage">SUBMIT</el-button>
-                  <a href="store" class="btn btn-danger ml-2" @click=" ">CANCEL</a>
+                  <a href="store" class="btn btn-danger ml-2" @click="cancelPackage">CANCEL</a>
                 </div>
               </el-form>
             </el-dialog>
@@ -76,12 +76,12 @@
               </el-table-column>
               <el-table-column align="center" resizable fixed="right" :min-width="300" label="ACTION">
                 <template slot="header">
-                  <span style="color: black;">ACTION</span> 
+                  <span style="color: black;">ACTION</span>
                 </template>
                 <template slot-scope="scope">
                   <el-button type="success" @click="editCategory(scope.row)" size="small"><i
                       class="fa fa-edit"></i></el-button>
-                  <el-button type="danger" @click="deleteProduct(scope.row.id)" size="small"><i
+                  <el-button type="danger" @click="deleteCategory(scope.row.id)" size="small"><i
                       class="fa fa-trash"></i></el-button>
                 </template>
               </el-table-column>
@@ -93,7 +93,7 @@
                   <el-input v-model="category.category_name" name="category_name"></el-input>
                 </el-form-item>
                 <el-form-item label="Sizes">
-                  <el-input v-model="category.has_sizes" name="has_sizes"></el-input>
+                  <el-input type="number" v-model="category.has_sizes" name="has_sizes"></el-input>
                 </el-form-item>
                 <el-form-item label="Grade Level">
                   <el-select v-model="filter_gradelevel" filterable placeholder="Select Grade Level..." @change="">
@@ -104,7 +104,7 @@
                 </el-form-item>
                 <div class="">
                   <el-button type="success" @click="createCategory">SUBMIT</el-button>
-                  <a href="store" class="btn btn-danger ml-2" @click=" ">CANCEL</a>
+                  <a href="store" class="btn btn-danger ml-2" @click="cancelCategory">CANCEL</a>
                 </div>
               </el-form>
             </el-dialog>
@@ -252,7 +252,7 @@ export default {
         productID: '',
         productname: '',
         package: [],
-        category: '',
+        // category: '',
         attatchment_image: [],
       },
       package: {
@@ -301,10 +301,52 @@ export default {
     handleChange(file, fileList) {
       this.product.attachment_image[0] = fileList[0].raw;
     },
+    getGradeLevels() {
+
+      let data = {
+        'branch_code': this.filter_branch,
+        'request_type': 1,
+      }
+
+      console.log(data);
+
+      axios.post(this.folder_name + '/admin/gradelevels', data).then(response => {
+        this.gradelevels = response.data;
+        this.filter_gradelevel = response.data[0].id;
+
+
+      });
+    },
+    getBranches() {
+      axios.post(this.folder_name + '/branches').then(response => {
+        this.branches = response.data;
+        this.filter_branch = response.data[0].id;
+
+        console.log(this.filter_branch);
+
+        // response.data.forEach(branch => this.itemForm.stocks[branch.id] = 0);
+      });
+    },
     getProduct() {
       axios.post(this.folder_name + '/admin/get')
         .then(res => {
           this.productList = res.data
+        }).catch(error => {
+
+        });
+    },
+    getPackage() {
+      axios.post(this.folder_name + '/admin/getpackage')
+        .then(res => {
+          this.packageList = res.data
+        }).catch(error => {
+
+        });
+    },
+    getCategory() {
+      axios.post(this.folder_name + '/admin/getcategory')
+        .then(res => {
+          this.categoryList = res.data
         }).catch(error => {
 
         });
@@ -329,6 +371,8 @@ export default {
       axios.post(this.folder_name + '/admin/addpackage', formData)
         .then(res => {
           this.$swal(res.data.title, res.data.text, res.data.type);
+          this.getPackage()
+          this.cancelPackage()
         }).catch(error => {
 
         });
@@ -336,15 +380,17 @@ export default {
     createCategory() {
       const form = this.$refs.category.$el;
       let formData = new FormData(form);
-      formData.append('packageID', this.package.packageID);
+      formData.append('categoryID', this.category.categoryID);
       axios.post(this.folder_name + '/admin/addcategory', formData)
         .then(res => {
           this.$swal(res.data.title, res.data.text, res.data.type);
+          this.getCategory()
+          this.cancelCategory()
         }).catch(error => {
 
         });
     },
-    editProduct(data) { //Need to make for Category and Package
+    editProduct(data) { 
       this.product = {
         productID: data.id,
         productname: data.productname,
@@ -373,13 +419,29 @@ export default {
       this.img_src = data.image,
         this.categoryVisible = true
     },
-    cancelProduct() {  //Need to make for Category and Package
+    cancelProduct() { 
       this.product = {
         productID: '',
         productname: '',
         gradelevel: '',
         package: '',
         category: '',
+      }
+      this.img_src = '',
+        this.productVisible = false
+    },
+    cancelPackage() {
+      this.package = {
+        packageID: '',
+        package_name: '',
+      }
+      this.img_src = '',
+        this.productVisible = false
+    },
+    cancelCategory() {
+      this.category = {
+        categoryID: '',
+        has_sizes: '',
       }
       this.img_src = '',
         this.productVisible = false
@@ -394,48 +456,26 @@ export default {
 
         });
     },
-    getBranches() {
-      axios.post(this.folder_name + '/branches').then(response => {
-        this.branches = response.data;
-        this.filter_branch = response.data[0].id;
-
-        console.log(this.filter_branch);
-
-        // response.data.forEach(branch => this.itemForm.stocks[branch.id] = 0);
-      });
-    },
-    getGradeLevels() {
-
-      let data = {
-        'branch_code': this.filter_branch,
-        'request_type': 1,
-      }
-
-      console.log(data);
-
-      axios.post(this.folder_name + '/admin/gradelevels', data).then(response => {
-        this.gradelevels = response.data;
-        this.filter_gradelevel = response.data[0].id;
-
-
-      });
-    },
-    getPackage() {
-      axios.post(this.folder_name + '/admin/getpackage')
+    deletePackage(id) {
+      let data = { 'id': id };
+      axios.post(this.folder_name + '/admin/deletepackage', data)
         .then(res => {
-          this.packageList = res.data
+          this.$swal(res.data.title, res.data.text, res.data.type);
+          this.getPackage()
         }).catch(error => {
 
         });
     },
-    getCategory() {
-      axios.post(this.folder_name + '/admin/getcategory')
+    deleteCategory(id) {
+      let data = { 'id': id };
+      axios.post(this.folder_name + '/admin/deletecategory', data)
         .then(res => {
-          this.categoryList = res.data
+          this.$swal(res.data.title, res.data.text, res.data.type);
+          this.getCategory()
         }).catch(error => {
 
         });
-    },
+    }
   }
 }
 </script>
