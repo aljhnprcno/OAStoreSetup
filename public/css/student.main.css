@@ -1,0 +1,14 @@
+body {
+    background-color: #FFF !important;
+}
+.arial-font {
+    font-family: arial;
+}
+.navbar {
+    justify-content: start !important;
+}
+.navbar .nav-item i {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 25px;
+    margin-left: 1rem;
+}

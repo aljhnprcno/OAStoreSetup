@@ -1,0 +1,11 @@
+.employee-img {
+    /* height: 150px; */
+    object-fit: cover;
+    object-position: center;
+    /* width: 100px; */
+}
+.search-label {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}

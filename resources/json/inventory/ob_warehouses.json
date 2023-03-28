@@ -1,0 +1,194 @@
+[
+    {
+        "campus": "Greenhills",
+        "warehouse_name": "Warehouse",
+        "room_code": "GHWH",
+        "description": "Receives supplier deliveries & processes SRRs, WB & SMI",
+        "accounting_unit_code": "40203",
+        "accounting_unit_name": "Asset Mgt-Asset Admin-GH Warehousing"
+    },
+    {
+        "campus": "Greenhills",
+        "warehouse_name": "Bookstore",
+        "room_code": "GHBS",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50630",
+        "accounting_unit_name": "Asset Mgmt-Bookstore"
+    },
+    {
+        "campus": "Greenhills",
+        "warehouse_name": "Bistro Sta Ana",
+        "room_code": "BSA",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50631",
+        "accounting_unit_name": "Canteen Operations"
+    },
+    {
+        "campus": "Greenhills",
+        "warehouse_name": "Property Dept",
+        "room_code": "Property",
+        "description": "Receives stocks for tagging from warehouse",
+        "accounting_unit_code": "CO405021",
+        "accounting_unit_name": "CO-Asset Mgt-Asset Admin-Property"
+    },
+    {
+        "campus": "Greenhills",
+        "warehouse_name": "Training Dept",
+        "room_code": "Training",
+        "description": "Receives stocks for inventory from warehouse",
+        "accounting_unit_code": "40401",
+        "accounting_unit_name": "CO-Non-teaching/Acad Supp-Training"
+    },
+    {
+        "campus": "Greenhills",
+        "warehouse_name": "Computer Services Dept",
+        "room_code": "CSD",
+        "description": "Receives stocks from warehouse",
+        "accounting_unit_code": "20303",
+        "accounting_unit_name": "CO-Admin-Computer Services Dept"
+    },
+    {
+        "campus": "Greenhills",
+        "warehouse_name": "Clinic",
+        "room_code": "GH Clinic",
+        "description": "Receives stocks from warehouse",
+        "accounting_unit_code": "50628",
+        "accounting_unit_name": "CO-Admin-Clinic"
+    },
+    {
+        "campus": "Sta. Ana",
+        "warehouse_name": "Warehouse",
+        "room_code": "SAWH",
+        "description": "Receives direct supplier deliveries & processes SRRs, WB & SMI",
+        "accounting_unit_code": "40203",
+        "accounting_unit_name": "Asset Mgt-Asset Admin-GH Warehousing"
+    },
+    {
+        "campus": "Sta. Ana",
+        "warehouse_name": "Bookstore",
+        "room_code": "SABS",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50603",
+        "accounting_unit_name": "Asset Mgmt-Bookstore"
+    },
+    {
+        "campus": "Sta. Ana",
+        "warehouse_name": "Bistro Terraza",
+        "room_code": "BT",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50631",
+        "accounting_unit_name": "Canteen Operations"
+    },
+    {
+        "campus": "Sta. Ana",
+        "warehouse_name": "Clinic",
+        "room_code": "SA Clinic",
+        "description": "Receives stocks from warehouse",
+        "accounting_unit_code": "50628",
+        "accounting_unit_name": "CO-Admin-Clinic"
+    },
+    {
+        "campus": "Las Piñas",
+        "warehouse_name": "Warehouse",
+        "room_code": "LPWH",
+        "description": "Receives direct supplier deliveries & processes SRRs, WB & SMI",
+        "accounting_unit_code": "40203",
+        "accounting_unit_name": "Asset Mgt-Asset Admin-GH Warehousing"
+    },
+    {
+        "campus": "Las Piñas",
+        "warehouse_name": "Bookstore",
+        "room_code": "LPBS",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50630",
+        "accounting_unit_name": "Asset Mgmt-Bookstore"
+    },
+    {
+        "campus": "Las Piñas",
+        "warehouse_name": "Bistro San Francesco",
+        "room_code": "BSF",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50631",
+        "accounting_unit_name": "Canteen Operations"
+    },
+    {
+        "campus": "Las Piñas",
+        "warehouse_name": "Clinic",
+        "room_code": "LP Clinic",
+        "description": "Receives stocks from warehouse",
+        "accounting_unit_code": "50628",
+        "accounting_unit_name": "CO-Admin-Clinic"
+    },
+    {
+        "campus": "Angeles",
+        "warehouse_name": "Warehouse",
+        "room_code": "ANWH",
+        "description": "Receives direct supplier deliveries & processes SRRs, WB & SMI",
+        "accounting_unit_code": "40203",
+        "accounting_unit_name": "Asset Mgt-Asset Admin-GH Warehousing"
+    },
+    {
+        "campus": "Angeles",
+        "warehouse_name": "Bookstore",
+        "room_code": "ANBS",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50630",
+        "accounting_unit_name": "Asset Mgmt-Bookstore"
+    },
+    {
+        "campus": "Angeles",
+        "warehouse_name": "Bistro Sta Chiara",
+        "room_code": "BSC",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50631",
+        "accounting_unit_name": "Canteen Operations"
+    },
+    {
+        "campus": "Angeles",
+        "warehouse_name": "Clinic",
+        "room_code": "AN Clinic",
+        "description": "Receives stocks from warehouse",
+        "accounting_unit_code": "50628",
+        "accounting_unit_name": "CO-Admin-Clinic"
+    },
+    {
+        "campus": "Fairview",
+        "warehouse_name": "Warehouse",
+        "room_code": "FVWH",
+        "description": "Receives direct supplier deliveries & processes SRRs, WB & SMI",
+        "accounting_unit_code": "40203",
+        "accounting_unit_name": "Asset Mgt-Asset Admin-GH Warehousing"
+    },
+    {
+        "campus": "Fairview",
+        "warehouse_name": "Bookstore",
+        "room_code": "FVBS",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50630",
+        "accounting_unit_name": "Asset Mgmt-Bookstore"
+    },
+    {
+        "campus": "Fairview",
+        "warehouse_name": "Bistro Amore",
+        "room_code": "BA",
+        "description": "Receives stocks for sale from warehouse",
+        "accounting_unit_code": "50631",
+        "accounting_unit_name": "Canteen Operations"
+    },
+    {
+        "campus": "Fairview",
+        "warehouse_name": "Clinic",
+        "room_code": "FV Clinic",
+        "description": "Receives stocks from warehouse",
+        "accounting_unit_code": "50628",
+        "accounting_unit_name": "CO-Admin-Clinic"
+    },
+    {
+        "campus": "Fairview",
+        "warehouse_name": "Warehouse Extension",
+        "room_code": "FVGHWH",
+        "description": "Stockroom extension of GH Warehouse in FV Campus",
+        "accounting_unit_code": "40203",
+        "accounting_unit_name": "Asset Mgt-Asset Admin-GH Warehousing"
+    }
+]

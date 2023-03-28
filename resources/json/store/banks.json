@@ -1,0 +1,305 @@
+[
+    {
+        "code": "ABC",
+        "name": "ALLIED BANK"},
+    {
+        "code": "AERO",
+        "name": "AERO Classic"},
+    {
+        "code": "AT",
+        "name": "ASIATRUST"},
+    {
+        "code": "AUB",
+        "name": "ASIA UNITED BANK"},
+    {
+        "code": "B1",
+        "name": "Bank One"},
+    {
+        "code": "BA",
+        "name": "Bank of America"},
+    {
+        "code": "BB",
+        "name": "Bancorp Bank"},
+    {
+        "code": "BC",
+        "name": "Bank of China"},
+    {
+        "code": "BCC",
+        "name": "Barclaycard Platinum"},
+    {
+        "code": "BDO",
+        "name": "BDO"},
+    {
+        "code": "BFl",
+        "name": "Bank of Florida"},
+    {
+        "code": "BM",
+        "name": "Bank of Montreal"},
+    {
+        "code": "BOC",
+        "name": "Bank of Commerce"},
+    {
+        "code": "BPI",
+        "name": "BPI"},
+    {
+        "code": "BPIFB",
+        "name": "BPI Family"},
+    {
+        "code": "BSJ",
+        "name": "Banco San Juan"},
+    {
+        "code": "BT",
+        "name": "Bank of Tokyo"},
+    {
+        "code": "BW",
+        "name": "BankWest"},
+    {
+        "code": "C1",
+        "name": "Capital One"},
+    {
+        "code": "CB",
+        "name": "CHINABANK"},
+    {
+        "code": "CHASE",
+        "name": "Chase Bank"},
+    {
+        "code": "Chinatru",
+        "name": "ChinaTrust"},
+    {
+        "code": "COB",
+        "name": "Commonwealth Bank"},
+    {
+        "code": "CSCU",
+        "name": "Central State Credit Union"},
+    {
+        "code": "CSSB",
+        "name": "City State Savings Bank"},
+    {
+        "code": "CT",
+        "name": "TD Canada Trust"},
+    {
+        "code": "CTB",
+        "name": "CITIBANK"},
+    {
+        "code": "CTSaving",
+        "name": "CITIBANK SAVINGS"},
+    {
+        "code": "DBP",
+        "name": "Development Bank of the Philippines"},
+    {
+        "code": "DBS",
+        "name": "DBS"},
+    {
+        "code": "DC",
+        "name": "DC Bank"},
+    {
+        "code": "DF",
+        "name": "Dubai First"},
+    {
+        "code": "DOHA",
+        "name": "Doha Bank"},
+    {
+        "code": "Dunia",
+        "name": "Dunia Bank"},
+    {
+        "code": "ENBD",
+        "name": "Emirates NBD"},
+    {
+        "code": "Equicom",
+        "name": "Equicom Savings Bank"},
+    {
+        "code": "EWB",
+        "name": "EASTWEST"},
+    {
+        "code": "FC",
+        "name": "PC Financial Canada"},
+    {
+        "code": "FGB",
+        "name": "First Gulf Bank"},
+    {
+        "code": "FHB",
+        "name": "First Hawaiian Bank"},
+    {
+        "code": "FMB",
+        "name": "1ST Macro Bank Inc"},
+    {
+        "code": "Gardensa",
+        "name": "Garden Savings"},
+    {
+        "code": "GC",
+        "name": "GreenCard"},
+    {
+        "code": "Guaguaba",
+        "name": "Guagua Bank"},
+    {
+        "code": "HDFC",
+        "name": "HDFC Bank"},
+    {
+        "code": "HF",
+        "name": "HALIFAX"},
+    {
+        "code": "HSBC",
+        "name": "HSBC"},
+    {
+        "code": "JACCS",
+        "name": "JACCS Credit Card"},
+    {
+        "code": "JP",
+        "name": "JP Morgan"},
+    {
+        "code": "KB Card",
+        "name": "KB Card"},
+    {
+        "code": "Krisflye",
+        "name": "Krisflyer Platinum"},
+    {
+        "code": "LBC",
+        "name": "LBC Bank"},
+    {
+        "code": "LBP",
+        "name": "Land Bank"},
+    {
+        "code": "LSB",
+        "name": "Lillesands Sparebank"},
+    {
+        "code": "Lubaoban",
+        "name": "Lubao Bank"},
+    {
+        "code": "MasB",
+        "name": "Mashreq Bank"},
+    {
+        "code": "MayBank",
+        "name": "MayBank"},
+    {
+        "code": "MB",
+        "name": "Malayan Bank"},
+    {
+        "code": "MBTC",
+        "name": "METROBANK"},
+    {
+        "code": "NAB",
+        "name": "National Australian Bank"},
+    {
+        "code": "NBAD",
+        "name": "National Bank of Abu Dhabi"},
+    {
+        "code": "NFCU",
+        "name": "Navy Federal Credit Union"},
+    {
+        "code": "OCBC",
+        "name": "OCBC Bank"},
+    {
+        "code": "Options",
+        "name": "Options Bank"},
+    {
+        "code": "Others",
+        "name": "Other Bank not in the list"},
+    {
+        "code": "OTP",
+        "name": "OTPBank"},
+    {
+        "code": "Patelco",
+        "name": "Patelco"},
+    {
+        "code": "PBB",
+        "name": "Phil. Business Bank"},
+    {
+        "code": "PBcom",
+        "name": "PBCom"},
+    {
+        "code": "Philtrus",
+        "name": "PhilTrust Bank"},
+    {
+        "code": "Planters",
+        "name": "Planters Bank"},
+    {
+        "code": "PNB",
+        "name": "PNB"},
+    {
+        "code": "PORACban",
+        "name": "Porac Bank"},
+    {
+        "code": "Premiere",
+        "name": "Premiere Bank"},
+    {
+        "code": "PSB",
+        "name": "PSBANK"},
+    {
+        "code": "PSBC",
+        "name": "Producers Savings Bank Corporation"},
+    {
+        "code": "Rak",
+        "name": "Rak Bank"},
+    {
+        "code": "RCBC",
+        "name": "RCBC"},
+    {
+        "code": "RCBCSavi",
+        "name": "RCBC Savings Bank"},
+    {
+        "code": "RCN",
+        "name": "Royal College of Nursing"},
+    {
+        "code": "Realbank",
+        "name": "Real Bank"},
+    {
+        "code": "Robinson",
+        "name": "RobinsonsBank"},
+    {
+        "code": "RoyalCan",
+        "name": "Royal Bank of Canada"},
+    {
+        "code": "Samsung",
+        "name": "Samsung Card"},
+    {
+        "code": "Saviorba",
+        "name": "Savior Bank"},
+    {
+        "code": "Scotia",
+        "name": "ScotiaBank"},
+    {
+        "code": "Security",
+        "name": "Security Bank"},
+    {
+        "code": "SFCU",
+        "name": "Stanford Federal Credit Union"},
+    {
+        "code": "SG",
+        "name": "St. George"},
+    {
+        "code": "Standard",
+        "name": "STANDARD CHARTER"},
+    {
+        "code": "Sterling",
+        "name": "Sterling Bank of Asia"},
+    {
+        "code": "TYB",
+        "name": "Tong-Yang Bank"},
+    {
+        "code": "UCPB",
+        "name": "United Coconut Planters Bank"},
+    {
+        "code": "UFJ",
+        "name": "UFJ Bank"},
+    {
+        "code": "UNFCU",
+        "name": "UNFCU"},
+    {
+        "code": "Union",
+        "name": "UNIONBANK"},
+    {
+        "code": "UnityBan",
+        "name": "Unity Bank"},
+    {
+        "code": "UOB",
+        "name": "United Overseas Bank"},
+    {
+        "code": "USAA",
+        "name": "USAA"},
+    {
+        "code": "VB",
+        "name": "Veterans Bank"},
+    {
+        "code": "WF",
+        "name": "Wells Fargo"}
+]

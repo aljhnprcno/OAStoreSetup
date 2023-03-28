@@ -1,0 +1,8 @@
+.search-label {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+.permissions-checkbox .el-checkbox {
+    display: block;
+}

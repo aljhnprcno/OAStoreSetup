@@ -1,0 +1,11 @@
+.text-header {
+    color: #00008B;
+    font-weight: bold;
+    font-size: 2.25rem;
+}
+
+@media (max-width: 768px) {
+    .text-header {
+        font-size: 1.75rem;
+    }
+}

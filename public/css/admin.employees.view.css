@@ -1,0 +1,30 @@
+.employee-img {
+    border-radius: 50%;
+    border-style: solid;
+    border-width: medium;
+    height: 200px;
+    margin: 1rem;
+    width: 200px;
+}
+.dependent-header,
+.educ-bg-header,
+.work-exp-header,
+.trainings-header,
+.hire-info-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.employee-info-container {
+    max-width: 100%;
+}
+.permissions-container {
+    margin-top: 3%;
+    margin-left: 5%;
+}
+.permissions-container div p {
+    margin-left: 2%;
+}
+.permissions-container div p input {
+    margin-right: 1%;
+}

@@ -1,0 +1,22 @@
+.table-container {
+    height: 72vh;
+    overflow-y: auto !important;
+}
+.table thead th {
+    background-color: #FFF;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+.table tbody tr {
+    border-bottom: 1px solid #DEE2E6;
+}
+.table tfoot td {
+    background-color: #FFF;
+    position: sticky;
+    bottom: 0;
+    z-index: 1;
+}
+.table {
+    margin-bottom: unset !important;
+}
