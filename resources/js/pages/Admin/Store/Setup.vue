@@ -13,7 +13,7 @@
                   <span style="color: black;">PACKAGE NAME</span>
                 </template>
               </el-table-column>
-              <el-table-column align="center" fixed prop="branch_code" resizable :min-width="300" label="Package Name">
+              <el-table-column align="center" fixed prop="branch_code" resizable :min-width="300" label="Branch">
                 <template slot="header">
                   <span style="color: black;">BRANCH</span>
                 </template>
@@ -96,13 +96,12 @@
                 <el-form-item label="Sizes">
                   <el-input type="number" v-model="category.has_sizes" name="has_sizes"></el-input>
                 </el-form-item>
-                <el-form-item label="Grade Level">
+                <!-- <el-form-item label="Grade Level">
                   <el-select v-model="filter_gradelevel" filterable placeholder="Select Grade Level...">
                     <el-option v-for="gradelevel in gradelevels" :key="gradelevel.grade_level_id"
                       :label="gradelevel.grade_name" :value="gradelevel.grade_level_id" />
                   </el-select>
-                  <!-- <el-input v-model="product.gradelevel" name="gradelevel"></el-input> -->
-                </el-form-item>
+                </el-form-item> -->
                 <div class="">
                   <el-button type="success" @click="createCategory">SUBMIT</el-button>
                   <a href="store" class="btn btn-danger ml-2" @click="cancelCategory">CANCEL</a>
@@ -112,7 +111,7 @@
 
           </el-tab-pane>
           <el-tab-pane label="Product Inventory" name="third">
-            <div class="col-md-12">
+            <div class="container">
               <div class="card-index">
                 <h1 class="mb-2"><b>Inventories</b></h1>
                 <h3 class="mb-3">Select Grade Level:</h3>
@@ -151,12 +150,11 @@
                         <span style="color: black;">PRODUCT PACKAGE</span>
                       </template>
                     </el-table-column>
-                    <el-table-column align="center" prop="branch_code" resizable :min-width="300"
-                      label="Package Name">
+                    <!-- <el-table-column align="center" prop="branch_code" resizable :min-width="300" label="Branch">
                       <template slot="header">
                         <span style="color: black;">BRANCH</span>
                       </template>
-                    </el-table-column>
+                    </el-table-column> -->
                     <el-table-column align="center" prop="name" resizable :min-width="300" label="Price">
                       <template slot="header">
                         <span style="color: black;">PRICE</span>
@@ -196,31 +194,25 @@
                   </el-table>
                 </div>
               </div>
-            </div>
+          </div>
+
             <el-dialog :visible.sync="productVisible">
               <el-form ref="product" :model="product">
                 <el-form-item label="Product Name">
                   <el-input v-model="product.productname" name="productname"></el-input>
                 </el-form-item>
-                <!-- <el-form-item label="Branch">
-                  <el-select v-model="filter_branch" filterable placeholder="Select Branch...">
-                    <el-option v-for="branch in branches" :key="branch.id" :label="branch.text" :value="branch.id" />
-                  </el-select>
-                </el-form-item> -->
-                <el-form-item label="Product Package">  
-                  <!-- need to do call packageID on select of product -->
-                  <el-select name="package" v-model="package.packageList" value-key="" filterable
-                    placeholder="Select Package...">
-                    <el-option v-for="packageList in packages" :key="package.packageID"
-                      :label="package.package_name" :value="package.packageID" />
+                <el-form-item label="Product Package">
+                  <el-select name="package" v-model="filter_packageList_one" value-key=""
+                    filterableplaceholder="Select Package...">
+                    <el-option v-for="packageList_one in packageList" :key="packageList_one.id"
+                      :label="packageList_one.package_name" :value="packageList_one.id" />
                   </el-select>
                 </el-form-item>
                 <el-form-item label="Product Category">
-                  <!-- need to do call categoryID on select of product -->
-                  <el-select name="category" v-model="filter_branch" value-key="" filterable
+                  <el-select name="category" v-model="filter_categoryList_one" value-key="" filterable
                     placeholder="Select Category...">
-                    <el-option v-for="branch in branches" :key="branch.id"
-                      :label="branch.text" :value="branch.id" />
+                    <el-option v-for="categoryList_one in categoryList" :key="categoryList_one.id"
+                      :label="categoryList_one.category_name" :value="categoryList_one.id" />
                   </el-select>
                 </el-form-item>
                 <el-form-item label="Upload Product" prop="attachment_image">
@@ -262,9 +254,8 @@ export default {
       product: {
         productID: '',
         productname: '',
-        // packageID: null,
-        // categoryID: null,
-        filter_package: '',
+        filter_packageList_one: [],
+        filter_categoryList_one: [],
         attatchment_image: [],
       },
       package: {
@@ -292,11 +283,12 @@ export default {
       filter_grade_level: '',
       package_one: '',
       packages: [],
-      filter_package: '',
       category_one: '',
       categories: [],
-      filter_category: '',
       activeName: 'first',
+      filter_productList_one: [],
+      filter_packageList_one: [],
+      filter_categoryList_one: [],
     }
   },
   mounted() {
@@ -343,9 +335,10 @@ export default {
       });
     },
     getProduct() {
-      axios.post(this.folder_name + '/admin/get')
+      axios.post(this.folder_name + '/admin/getproduct')
         .then(res => {
           this.productList = res.data
+          this.filter_productList_one = response.data[0].id;
         }).catch(error => {
 
         });
@@ -354,15 +347,16 @@ export default {
       axios.post(this.folder_name + '/admin/getpackage')
         .then(res => {
           this.packageList = res.data
+          this.filter_packageList_one = response.data[0].id;
         }).catch(error => {
 
         });
-
     },
     getCategory() {
       axios.post(this.folder_name + '/admin/getcategory')
         .then(res => {
           this.categoryList = res.data
+          this.filter_categoryList_one = response.data[0].id;
         }).catch(error => {
 
         });
@@ -393,8 +387,6 @@ export default {
         }).catch(error => {
 
         });
-      console.log(this.filter_grade_level);
-      console.log(formData);
     },
     createCategory() {
       const form = this.$refs.category.$el;

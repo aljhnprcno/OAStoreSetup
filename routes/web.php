@@ -97,7 +97,7 @@ Route::get('/admin/store', 'StoreSetupController@index');
 Route::get('/admin/AddProduct', 'StoreSetupController@store');
 
 Route::post('/admin/add', 'StoreSetupController@create');
-Route::post('/admin/get', 'StoreSetupController@getProduct');
+Route::post('/admin/getproduct', 'StoreSetupController@getProduct');
 
 Route::post('/admin/delete', 'StoreSetupController@deleteProduct');
 Route::post('/admin/deletepackage', 'StoreSetupController@deletePackage');
