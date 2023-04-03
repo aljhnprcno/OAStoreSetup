@@ -176,6 +176,8 @@ class StoreSetupController extends Controller
     } else {
       $query = Package::create([
         'package_name' => $request->package_name,
+        'branch_code' => $request->branch_code,
+        'grade_level_id' => $request->grade_level_id,
       ]);
 
       if ($query) {

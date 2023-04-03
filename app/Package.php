@@ -10,7 +10,10 @@ class Package extends Model
 {
   protected $fillable = [
     'package_name',
-    'grade_level_id'
+    'grade_level_id',
+    'branch_code',
+    'package',
+    'category'
   ];
 
   protected $appends = [
@@ -24,6 +27,5 @@ class Package extends Model
       if(!empty($gradeName)){
         return $gradeName->grade_name;
       }
-
   }
 }

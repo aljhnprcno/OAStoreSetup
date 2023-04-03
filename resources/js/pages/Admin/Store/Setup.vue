@@ -39,15 +39,16 @@
             <el-dialog :visible.sync="packageVisible">
               <el-form ref="package" :model="package">
                 <el-form-item label="Package Name">
-                  <el-input v-model="package.package_name" name="package_name"></el-input>
+                  <el-input name="package_name" v-model="package.package_name"></el-input>
                 </el-form-item>
                 <el-form-item label="Branch">
-                  <el-select v-model="filter_branch" filterable placeholder="Select Branch..." @change="">
+                  <el-select name="branch_code" v-model="filter_branch" filterable placeholder="Select Branch...">
                     <el-option v-for="branch in branches" :key="branch.id" :label="branch.text" :value="branch.id" />
                   </el-select>
                 </el-form-item>
                 <el-form-item label="Grade Level">
-                  <el-select v-model="filter_gradelevel" filterable placeholder="Select Grade Level..." @change="">
+                  <el-select v-model="filter_grade_level" value-key="grade_level_id" filterable
+                    placeholder="Select Grade Level...">
                     <el-option v-for="gradelevel in gradelevels" :key="gradelevel.grade_level_id"
                       :label="gradelevel.grade_name" :value="gradelevel.grade_level_id" />
                   </el-select>
@@ -96,7 +97,7 @@
                   <el-input type="number" v-model="category.has_sizes" name="has_sizes"></el-input>
                 </el-form-item>
                 <el-form-item label="Grade Level">
-                  <el-select v-model="filter_gradelevel" filterable placeholder="Select Grade Level..." @change="">
+                  <el-select v-model="filter_gradelevel" filterable placeholder="Select Grade Level...">
                     <el-option v-for="gradelevel in gradelevels" :key="gradelevel.grade_level_id"
                       :label="gradelevel.grade_name" :value="gradelevel.grade_level_id" />
                   </el-select>
@@ -145,11 +146,17 @@
                         <span style="color: black;">PRODUCT CATEGORY</span>
                       </template>
                     </el-table-column>
-                    <!-- <el-table-column align="center" prop="gradelevel" resizable :min-width="300" label="Grade Level">
+                    <el-table-column align="center" prop="package" resizable :min-width="300" label="Product Package">
                       <template slot="header">
-                        <span style="color: black;">GRADE LEVEL</span>
+                        <span style="color: black;">PRODUCT PACKAGE</span>
                       </template>
-                    </el-table-column> -->
+                    </el-table-column>
+                    <el-table-column align="center" prop="branch_code" resizable :min-width="300"
+                      label="Package Name">
+                      <template slot="header">
+                        <span style="color: black;">BRANCH</span>
+                      </template>
+                    </el-table-column>
                     <el-table-column align="center" prop="name" resizable :min-width="300" label="Price">
                       <template slot="header">
                         <span style="color: black;">PRICE</span>
@@ -195,22 +202,26 @@
                 <el-form-item label="Product Name">
                   <el-input v-model="product.productname" name="productname"></el-input>
                 </el-form-item>
-                <el-form-item label="Branch">
-                  <el-select v-model="filter_branch" filterable placeholder="Select Branch..." @change="">
+                <!-- <el-form-item label="Branch">
+                  <el-select v-model="filter_branch" filterable placeholder="Select Branch...">
                     <el-option v-for="branch in branches" :key="branch.id" :label="branch.text" :value="branch.id" />
                   </el-select>
-                </el-form-item>
-                <!-- <el-form-item label="Grade Level">
-                  <el-select v-model="filter_gradelevel" filterable placeholder="Select Grade Level..." @change="">
-                    <el-option v-for="gradelevel in gradelevels" :key="gradelevel.grade_level_id"
-                      :label="gradelevel.grade_name" :value="gradelevel.grade_level_id" />
-                  </el-select>
                 </el-form-item> -->
-                <el-form-item label="Package">
-                  <el-input v-model="product.package" name="package"></el-input>
+                <el-form-item label="Product Package">  
+                  <!-- need to do call packageID on select of product -->
+                  <el-select name="package" v-model="package.packageList" value-key="" filterable
+                    placeholder="Select Package...">
+                    <el-option v-for="packageList in packages" :key="package.packageID"
+                      :label="package.package_name" :value="package.packageID" />
+                  </el-select>
                 </el-form-item>
-                <el-form-item label="Category">
-                  <el-input v-model="product.category" name="category"></el-input>
+                <el-form-item label="Product Category">
+                  <!-- need to do call categoryID on select of product -->
+                  <el-select name="category" v-model="filter_branch" value-key="" filterable
+                    placeholder="Select Category...">
+                    <el-option v-for="branch in branches" :key="branch.id"
+                      :label="branch.text" :value="branch.id" />
+                  </el-select>
                 </el-form-item>
                 <el-form-item label="Upload Product" prop="attachment_image">
                   <el-upload ref="attachment_image" action="" list-type="picture-card" accept=".jpg, .png, .jpeg"
@@ -251,14 +262,15 @@ export default {
       product: {
         productID: '',
         productname: '',
-        package: [],
-        // category: '',
+        // packageID: null,
+        // categoryID: null,
+        filter_package: '',
         attatchment_image: [],
       },
       package: {
         packageID: '',
         filter_branch: '',
-        filter_gradelevel: '',
+        filter_gradelevel: [],
       },
       category: {
         categoryID: '',
@@ -277,7 +289,13 @@ export default {
       filter_branch: '',
       gradelevel: '',
       gradelevels: [],
-      filter_gradelevel: '',
+      filter_grade_level: '',
+      package_one: '',
+      packages: [],
+      filter_package: '',
+      category_one: '',
+      categories: [],
+      filter_category: '',
       activeName: 'first',
     }
   },
@@ -308,12 +326,9 @@ export default {
         'request_type': 1,
       }
 
-      console.log(data);
-
       axios.post(this.folder_name + '/admin/gradelevels', data).then(response => {
         this.gradelevels = response.data;
         this.filter_gradelevel = response.data[0].id;
-
 
       });
     },
@@ -322,7 +337,7 @@ export default {
         this.branches = response.data;
         this.filter_branch = response.data[0].id;
 
-        console.log(this.filter_branch);
+        // console.log(this.filter_gradelevel);
 
         // response.data.forEach(branch => this.itemForm.stocks[branch.id] = 0);
       });
@@ -342,6 +357,7 @@ export default {
         }).catch(error => {
 
         });
+
     },
     getCategory() {
       axios.post(this.folder_name + '/admin/getcategory')
@@ -368,6 +384,7 @@ export default {
       const form = this.$refs.package.$el;
       let formData = new FormData(form);
       formData.append('packageID', this.package.packageID);
+      formData.append('grade_level_id', this.filter_grade_level);
       axios.post(this.folder_name + '/admin/addpackage', formData)
         .then(res => {
           this.$swal(res.data.title, res.data.text, res.data.type);
@@ -376,6 +393,8 @@ export default {
         }).catch(error => {
 
         });
+      console.log(this.filter_grade_level);
+      console.log(formData);
     },
     createCategory() {
       const form = this.$refs.category.$el;
@@ -390,7 +409,7 @@ export default {
 
         });
     },
-    editProduct(data) { 
+    editProduct(data) {
       this.product = {
         productID: data.id,
         productname: data.productname,
@@ -419,7 +438,7 @@ export default {
       this.img_src = data.image,
         this.categoryVisible = true
     },
-    cancelProduct() { 
+    cancelProduct() {
       this.product = {
         productID: '',
         productname: '',
